@@ -1,0 +1,16 @@
+{
+  "name": "How to Spawn Your Dragon",
+  "short_name": "Spawn Dragon",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#050608",
+  "theme_color": "#050608",
+  "description": "Compact OOF dragon chicken predictor and tracker.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

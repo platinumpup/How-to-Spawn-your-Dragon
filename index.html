@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#050608" />
+  <title>How to Spawn Your Dragon</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="topbar">
+      <div>
+        <div class="eyebrow">[OOF] OrganizedChaos</div>
+        <h1>How to Spawn Your Dragon</h1>
+      </div>
+      <button id="compactBtn" class="ghost" title="Compact mode">compact</button>
+    </section>
+
+    <section class="card predictor">
+      <div class="section-title">Chicken Check</div>
+      <div class="grid two">
+        <label>X<input id="xInput" inputmode="numeric" placeholder="636"></label>
+        <label>Y<input id="yInput" inputmode="numeric" placeholder="528"></label>
+      </div>
+      <div class="button-row two-buttons">
+        <button id="checkBtn" class="primary">CHECK</button>
+        <button id="recordBtn" class="record">RECORD & LOG</button>
+      </div>
+
+      <div id="result" class="result ready">
+        <div id="verdict">READY</div>
+        <p id="advice">Enter a chicken coordinate to check the odds.</p>
+      </div>
+
+      <pre id="details">Saved observations load automatically on this device.</pre>
+    </section>
+
+    <section class="card tracker">
+      <button id="trackerToggle" class="tracker-toggle">Dragon Tracker ▾</button>
+      <div id="trackerPanel" class="tracker-panel hidden">
+        <div class="grid four">
+          <label>Start X<input id="sx" inputmode="numeric" placeholder="476"></label>
+          <label>Start Y<input id="sy" inputmode="numeric" placeholder="760"></label>
+          <label>Finish X<input id="fx" inputmode="numeric" placeholder="457"></label>
+          <label>Finish Y<input id="fy" inputmode="numeric" placeholder="705"></label>
+        </div>
+        <button id="nextBtn" class="primary full">NEXT LANDING POINT</button>
+        <pre id="trackerResult">Enter start + finish to project the next point.</pre>
+      </div>
+    </section>
+
+    <section class="card guide">
+      <div class="section-title">How it works</div>
+      <p><b>Dragon chickens are not random.</b> They are tied to the path of wandering overlord zombies.</p>
+      <ol>
+        <li>Find a wandering zombie and watch where it starts and stops.</li>
+        <li>Wait for it to fully stop and choose its next route.</li>
+        <li>Follow the new path it takes.</li>
+        <li>Hit the first chicken on that path.</li>
+      </ol>
+      <p class="tiny">If it is not working, wait until the next chicken spawn reset or move to a fresh area. Someone may have already farmed that set.</p>
+    </section>
+
+    <footer>2026 © PlatinumBoy</footer>
+  </main>
+
+  <div id="logModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-title">Record Chicken Result</div>
+      <p id="modalCoord">Coordinate: —</p>
+      <h2>Did you spawn an Undead Dragon?</h2>
+      <div class="modal-buttons">
+        <button id="modalYes" class="success">YES</button>
+        <button id="modalNo" class="blue">NO</button>
+      </div>
+      <button id="modalCancel" class="ghost full">cancel</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
