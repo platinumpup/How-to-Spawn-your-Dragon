@@ -1,25 +1,5 @@
 # How to Spawn Your Dragon
 
-Mobile-first PWA version.
-
-This version is built to feel more like an actual phone app instead of a desktop webpage.
-
-## What changed
-
-- Full-screen mobile app layout
-- iPhone safe-area support
-- App-style header
-- Bottom tab navigation
-- Separate screens for Check, Tracker, and Guide
-- Larger touch-friendly buttons and inputs
-- Less desktop spacing
-- Better installed PWA behavior
-- Bone OOF icon included in Apple/PWA sizes
-
-## Main screens
-
-### Check
-
 Enter a chicken coordinate and tap **CHECK**.
 
 The app shows:
