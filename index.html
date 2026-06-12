@@ -2,68 +2,117 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Spawn Dragon" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="theme-color" content="#050608" />
   <title>How to Spawn Your Dragon</title>
   <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="app">
-    <section class="topbar">
+
+  <div id="splash" class="splash" aria-label="Loading How to Spawn Your Dragon">
+    <div class="blood-fill"></div>
+    <div class="blood-drips">
+      <span style="--x:8%;--h:34vh;--w:38px;--d:.1s"></span>
+      <span style="--x:18%;--h:52vh;--w:52px;--d:.28s"></span>
+      <span style="--x:31%;--h:29vh;--w:34px;--d:.04s"></span>
+      <span style="--x:43%;--h:66vh;--w:60px;--d:.18s"></span>
+      <span style="--x:57%;--h:42vh;--w:44px;--d:.33s"></span>
+      <span style="--x:70%;--h:58vh;--w:55px;--d:.12s"></span>
+      <span style="--x:84%;--h:37vh;--w:40px;--d:.25s"></span>
+      <span style="--x:94%;--h:72vh;--w:62px;--d:.02s"></span>
+    </div>
+    <div class="splash-shine"></div>
+    <div class="splash-content">
+      <img src="apple-touch-icon.png" alt="" class="splash-icon" />
+      <div class="splash-kicker">[OOF] OrganizedChaos</div>
+      <div class="splash-title">How to Spawn Your Dragon</div>
+      <div class="splash-subtitle">loading app...</div>
+      <div class="splash-bar"><span></span></div>
+    </div>
+  </div>
+
+  <main class="app-shell">
+    <header class="app-header">
       <div>
         <div class="eyebrow">[OOF] OrganizedChaos</div>
         <h1>How to Spawn Your Dragon</h1>
       </div>
-      <button id="compactBtn" class="ghost" title="Compact mode">compact</button>
-    </section>
+      <button id="compactBtn" class="icon-button" aria-label="Compact mode">⇲</button>
+    </header>
 
-    <section class="card predictor">
-      <div class="section-title">Chicken Check</div>
-      <div class="grid two">
-        <label>X<input id="xInput" inputmode="numeric" placeholder="636"></label>
-        <label>Y<input id="yInput" inputmode="numeric" placeholder="528"></label>
-      </div>
-      <div class="button-row two-buttons">
-        <button id="checkBtn" class="primary">CHECK</button>
-        <button id="recordBtn" class="record">RECORD & LOG</button>
-      </div>
-
-      <div id="result" class="result ready">
-        <div id="verdict">READY</div>
-        <p id="advice">Enter a chicken coordinate to check the odds.</p>
-      </div>
-
-      <pre id="details">Saved observations load automatically on this device.</pre>
-    </section>
-
-    <section class="card tracker">
-      <button id="trackerToggle" class="tracker-toggle">Dragon Tracker ▾</button>
-      <div id="trackerPanel" class="tracker-panel hidden">
-        <div class="grid four">
-          <label>Start X<input id="sx" inputmode="numeric" placeholder="476"></label>
-          <label>Start Y<input id="sy" inputmode="numeric" placeholder="760"></label>
-          <label>Finish X<input id="fx" inputmode="numeric" placeholder="457"></label>
-          <label>Finish Y<input id="fy" inputmode="numeric" placeholder="705"></label>
+    <section id="screenCheck" class="screen active">
+      <div class="hero-card">
+        <div class="section-title">Chicken Check</div>
+        <div class="coord-grid">
+          <label>X<input id="xInput" inputmode="numeric" pattern="[0-9]*" placeholder="636"></label>
+          <label>Y<input id="yInput" inputmode="numeric" pattern="[0-9]*" placeholder="528"></label>
         </div>
+
+        <div class="button-row">
+          <button id="checkBtn" class="primary">CHECK</button>
+          <button id="recordBtn" class="secondary">RECORD & LOG</button>
+        </div>
+
+        <div id="result" class="result ready">
+          <div id="verdict">READY</div>
+          <p id="advice">Enter a chicken coordinate to check the odds.</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="section-title">Details</div>
+        <pre id="details">Saved observations load automatically on this device.</pre>
+      </div>
+    </section>
+
+    <section id="screenTracker" class="screen">
+      <div class="hero-card">
+        <div class="section-title">Dragon Tracker</div>
+        <p class="helper">Enter where the wandering zombie started and where it stopped. The app projects the next landing point.</p>
+
+        <div class="tracker-grid">
+          <label>Start X<input id="sx" inputmode="numeric" pattern="[0-9]*" placeholder="476"></label>
+          <label>Start Y<input id="sy" inputmode="numeric" pattern="[0-9]*" placeholder="760"></label>
+          <label>Finish X<input id="fx" inputmode="numeric" pattern="[0-9]*" placeholder="457"></label>
+          <label>Finish Y<input id="fy" inputmode="numeric" pattern="[0-9]*" placeholder="705"></label>
+        </div>
+
         <button id="nextBtn" class="primary full">NEXT LANDING POINT</button>
         <pre id="trackerResult">Enter start + finish to project the next point.</pre>
       </div>
     </section>
 
-    <section class="card guide">
-      <div class="section-title">How it works</div>
-      <p><b>Dragon chickens are not random.</b> They are tied to the path of wandering overlord zombies.</p>
-      <ol>
-        <li>Find a wandering zombie and watch where it starts and stops.</li>
-        <li>Wait for it to fully stop and choose its next route.</li>
-        <li>Follow the new path it takes.</li>
-        <li>Hit the first chicken on that path.</li>
-      </ol>
-      <p class="tiny">If it is not working, wait until the next chicken spawn reset or move to a fresh area. Someone may have already farmed that set.</p>
+    <section id="screenGuide" class="screen">
+      <div class="hero-card guide">
+        <div class="section-title">How it works</div>
+        <p><b>Dragon chickens are not random.</b> They are tied to the path of wandering overlord zombies.</p>
+        <ol>
+          <li>Find a wandering zombie and watch where it starts and stops.</li>
+          <li>Wait for it to fully stop and choose its next route.</li>
+          <li>Follow the new path it takes.</li>
+          <li>Hit the first chicken on that path.</li>
+        </ol>
+        <div class="rule-box">Zombie stops → new direction → follow that line → first chicken = dragon chance.</div>
+        <p class="helper">If it is not working, wait until the next chicken spawn reset or move to a fresh area. Someone may have already farmed that set.</p>
+      </div>
     </section>
 
-    <footer>2026 © PlatinumBoy</footer>
+    <nav class="tabbar" aria-label="App navigation">
+      <button class="tab active" data-screen="screenCheck">Check</button>
+      <button class="tab" data-screen="screenTracker">Tracker</button>
+      <button class="tab" data-screen="screenGuide">Guide</button>
+    </nav>
+
+    <footer class="app-footer">2026 © PlatinumBoy</footer>
   </main>
 
   <div id="logModal" class="modal hidden" role="dialog" aria-modal="true">
