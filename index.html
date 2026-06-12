@@ -53,8 +53,8 @@
       <div class="hero-card">
         <div class="section-title">Chicken Check</div>
         <div class="coord-grid">
-          <label>X<input id="xInput" inputmode="numeric" pattern="[0-9]*" placeholder="636"></label>
-          <label>Y<input id="yInput" inputmode="numeric" pattern="[0-9]*" placeholder="528"></label>
+          <label>X<input id="xInput" inputmode="numeric" pattern="[0-9]*" placeholder="000"></label>
+          <label>Y<input id="yInput" inputmode="numeric" pattern="[0-9]*" placeholder="999"></label>
         </div>
 
         <div class="button-row">
@@ -76,25 +76,24 @@
 
     <section id="screenTracker" class="screen">
       <div class="hero-card">
-        <div class="section-title">Dragon Tracker</div>
+        <div class="section-title">Undead Dragon Boss Tracker</div>
         <p class="helper">Enter where the wandering zombie started and where it stopped. The app projects the next landing point.</p>
 
         <div class="tracker-grid">
-          <label>Start X<input id="sx" inputmode="numeric" pattern="[0-9]*" placeholder="476"></label>
-          <label>Start Y<input id="sy" inputmode="numeric" pattern="[0-9]*" placeholder="760"></label>
-          <label>Finish X<input id="fx" inputmode="numeric" pattern="[0-9]*" placeholder="457"></label>
-          <label>Finish Y<input id="fy" inputmode="numeric" pattern="[0-9]*" placeholder="705"></label>
+          <label>Start X<input id="sx" inputmode="numeric" pattern="[0-9]*" placeholder="000"></label>
+          <label>Start Y<input id="sy" inputmode="numeric" pattern="[0-9]*" placeholder="000"></label>
+          <label>Finish X<input id="fx" inputmode="numeric" pattern="[0-9]*" placeholder="999"></label>
+          <label>Finish Y<input id="fy" inputmode="numeric" pattern="[0-9]*" placeholder="999"></label>
         </div>
 
         <button id="nextBtn" class="primary full">NEXT LANDING POINT</button>
-        <pre id="trackerResult">Enter start + finish to project the next point.</pre>
       </div>
     </section>
 
     <section id="screenGuide" class="screen">
       <div class="hero-card guide">
         <div class="section-title">How it works</div>
-        <p><b>Dragon chickens are not random.</b> They are tied to the path of wandering overlord zombies.</p>
+        <p><b>Dragon spawning chickens are not random.</b> They are tied to the path of wandering overlord zombies.</p>
         <ol>
           <li>Find a wandering zombie and watch where it starts and stops.</li>
           <li>Wait for it to fully stop and choose its next route.</li>
@@ -102,7 +101,7 @@
           <li>Hit the first chicken on that path.</li>
         </ol>
         <div class="rule-box">Zombie stops → new direction → follow that line → first chicken = dragon chance.</div>
-        <p class="helper">If it is not working, wait until the next chicken spawn reset or move to a fresh area. Someone may have already farmed that set.</p>
+        <p class="helper"><i>If it is not working, wait until the next chicken spawn reset or move to a fresh area. Someone may have already farmed that set.</i></p>
       </div>
     </section>
 
