@@ -1,5 +1,25 @@
 # How to Spawn Your Dragon
 
+Mobile-first PWA version.
+
+This version is built to feel more like an actual phone app instead of a desktop webpage.
+
+## What changed
+
+- Full-screen mobile app layout
+- iPhone safe-area support
+- App-style header
+- Bottom tab navigation
+- Separate screens for Check, Tracker, and Guide
+- Larger touch-friendly buttons and inputs
+- Less desktop spacing
+- Better installed PWA behavior
+- Bone OOF icon included in Apple/PWA sizes
+
+## Main screens
+
+### Check
+
 Enter a chicken coordinate and tap **CHECK**.
 
 The app shows:
@@ -66,3 +86,7 @@ Splash screen update v13: replaced CSS-only drips with an image-based Goosebumps
 Splash screen update v14: removed blood/goop styling and replaced it with a clean black backdrop, soft white spotlight, glass card, and simple loading bar.
 
 Icon cleanup v15: removed icon.svg completely and updated manifest/service worker to use PNG icons only.
+
+Final splash cleanup v16: removed the fake blood background asset entirely. Splash is now clean black with a soft white spotlight, glass card, PNG app icon, and simple loading bar.
+
+Google Sheets sync v17: added Sync tab, Google Apps Script backend, shared Google Sheet read/write logging, and setup guide.

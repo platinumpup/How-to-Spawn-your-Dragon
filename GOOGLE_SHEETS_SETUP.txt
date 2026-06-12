@@ -1,0 +1,32 @@
+# Google Sheets Shared Logging Setup
+
+This version can save dragon logs to a shared Google Sheet.
+
+## Setup
+
+1. Create a Google Sheet named `OOF Dragon Logs`.
+2. Open the sheet.
+3. Go to Extensions -> Apps Script.
+4. Paste the contents of `google_apps_script_backend.gs`.
+5. Save.
+6. Click Deploy -> New deployment.
+7. Choose Web app.
+8. Set Execute as: Me.
+9. Set Who has access: Anyone.
+10. Deploy and copy the Web App URL.
+11. Open the PWA, go to Sync, paste the URL, and tap SAVE URL.
+
+## How it works
+
+When someone taps Record & Log and answers YES/NO:
+- it saves locally on their device
+- it sends the log to the Google Sheet
+- Sync Now pulls the shared union log back into the app
+- the predictor uses seed data + local logs + shared logs
+
+This is shared syncing, not instant live multiplayer. The app auto-syncs on open and can sync manually with Sync Now.
+
+Columns:
+id, timestamp, x, y, relative_x, relative_y, result, client_id
+
+2026 © PlatinumBoy

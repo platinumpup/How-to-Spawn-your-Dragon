@@ -18,19 +18,8 @@
 </head>
 <body>
 
-  <div id="splash" class="splash" aria-label="Loading How to Spawn Your Dragon">
-    <div class="blood-fill"></div>
-    <div class="blood-drips">
-      <span style="--x:8%;--h:34vh;--w:38px;--d:.1s"></span>
-      <span style="--x:18%;--h:52vh;--w:52px;--d:.28s"></span>
-      <span style="--x:31%;--h:29vh;--w:34px;--d:.04s"></span>
-      <span style="--x:43%;--h:66vh;--w:60px;--d:.18s"></span>
-      <span style="--x:57%;--h:42vh;--w:44px;--d:.33s"></span>
-      <span style="--x:70%;--h:58vh;--w:55px;--d:.12s"></span>
-      <span style="--x:84%;--h:37vh;--w:40px;--d:.25s"></span>
-      <span style="--x:94%;--h:72vh;--w:62px;--d:.02s"></span>
-    </div>
-    <div class="splash-shine"></div>
+    <div id="splash" class="splash" aria-label="Loading How to Spawn Your Dragon">
+    <div class="splash-light"></div>
     <div class="splash-content">
       <img src="apple-touch-icon.png" alt="" class="splash-icon" />
       <div class="splash-kicker">[OOF] OrganizedChaos</div>
@@ -40,7 +29,7 @@
     </div>
   </div>
 
-  <main class="app-shell">
+<main class="app-shell">
     <header class="app-header">
       <div>
         <div class="eyebrow">[OOF] OrganizedChaos</div>
@@ -64,29 +53,58 @@
 
         <div id="result" class="result ready">
           <div id="verdict">READY</div>
-          <p id="advice">Enter a chicken coordinate to check the odds.</p>
+          <p id="advice">Enter a chicken's coordinate to check the odds.</p>
         </div>
       </div>
 
       <div class="info-card">
         <div class="section-title">Details</div>
-        <pre id="details">Saved observations load automatically on this device.</pre>
+        <pre id="details"><i>Saved observations load automatically on this device.</i></pre>
       </div>
     </section>
 
     <section id="screenTracker" class="screen">
       <div class="hero-card">
-        <div class="section-title">Undead Dragon Boss Tracker</div>
+        <div class="section-title">Dragon Tracker</div>
         <p class="helper">Enter where the wandering zombie started and where it stopped. The app projects the next landing point.</p>
 
         <div class="tracker-grid">
-          <label>Start X<input id="sx" inputmode="numeric" pattern="[0-9]*" placeholder="000"></label>
-          <label>Start Y<input id="sy" inputmode="numeric" pattern="[0-9]*" placeholder="000"></label>
-          <label>Finish X<input id="fx" inputmode="numeric" pattern="[0-9]*" placeholder="999"></label>
-          <label>Finish Y<input id="fy" inputmode="numeric" pattern="[0-9]*" placeholder="999"></label>
+          <label>Start X<input id="sx" inputmode="numeric" pattern="[0-9]*" placeholder="476"></label>
+          <label>Start Y<input id="sy" inputmode="numeric" pattern="[0-9]*" placeholder="760"></label>
+          <label>Finish X<input id="fx" inputmode="numeric" pattern="[0-9]*" placeholder="457"></label>
+          <label>Finish Y<input id="fy" inputmode="numeric" pattern="[0-9]*" placeholder="705"></label>
         </div>
 
         <button id="nextBtn" class="primary full">NEXT LANDING POINT</button>
+        <pre id="trackerResult"><i><>Enter start + finish to project the next point.</i></pre>
+      </div>
+    </section>
+
+    <section id="screenSync" class="screen">
+      <div class="hero-card">
+        <div class="section-title">Union Sync</div>
+        <p class="helper">Connect this app to the shared OOF Google Sheet so everyone can log dragon results together.</p>
+
+        <label>Google Apps Script Web App URL
+          <input id="sheetUrlInput" class="url-input" inputmode="url" placeholder="Paste Web App URL here">
+        </label>
+
+        <div class="button-row">
+          <button id="saveSheetUrlBtn" class="primary">SAVE URL</button>
+          <button id="syncNowBtn" class="secondary">SYNC NOW</button>
+        </div>
+
+        <div class="sync-status" id="syncStatus">No shared sheet connected yet.</div>
+
+        <div class="sync-stats">
+          <div><b id="sharedDragonCount">0</b><span>shared dragons</span></div>
+          <div><b id="sharedNoCount">0</b><span>shared no-dragon</span></div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="section-title">How shared logging works</div>
+        <p class="helper">When connected, Record & Log saves locally and sends the result to the Google Sheet. Sync Now pulls the union log back into this app.</p>
       </div>
     </section>
 
@@ -101,13 +119,14 @@
           <li>Hit the first chicken on that path.</li>
         </ol>
         <div class="rule-box">Zombie stops → new direction → follow that line → first chicken = dragon chance.</div>
-        <p class="helper"><i>If it is not working, wait until the next chicken spawn reset or move to a fresh area. Someone may have already farmed that set.</i></p>
+        <p class="helper">If it is not working, wait until the next chicken spawn reset or move to a fresh area. Someone may have already farmed that set.</p>
       </div>
     </section>
 
     <nav class="tabbar" aria-label="App navigation">
-      <button class="tab active" data-screen="screenCheck">Checker</button>
+      <button class="tab active" data-screen="screenCheck">Check</button>
       <button class="tab" data-screen="screenTracker">Tracker</button>
+      <button class="tab" data-screen="screenSync">Sync</button>
       <button class="tab" data-screen="screenGuide">Guide</button>
     </nav>
 

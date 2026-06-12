@@ -577,3 +577,151 @@ pre{
   background:linear-gradient(90deg,#777,#fff,#d8d8d8) !important;
   box-shadow:0 0 18px rgba(255,255,255,.32);
 }
+
+
+/* v16 FINAL clean splash: no blood/goop assets, no SVG, no fake drips */
+.splash{
+  position:fixed !important;
+  inset:0 !important;
+  z-index:999 !important;
+  display:grid !important;
+  place-items:center !important;
+  overflow:hidden !important;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255,255,255,.20), rgba(255,255,255,.06) 19%, transparent 44%),
+    radial-gradient(circle at 50% 70%, rgba(255,46,46,.12), transparent 38%),
+    linear-gradient(180deg, #080809 0%, #020203 62%, #050506 100%) !important;
+  opacity:1;
+  transition:opacity .45s ease, visibility .45s ease;
+}
+.splash.done{
+  opacity:0 !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+.splash-light{
+  position:absolute;
+  width:78vw;
+  max-width:460px;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.20), rgba(255,255,255,.08) 32%, transparent 68%);
+  filter:blur(8px);
+  transform:translateY(-8%);
+}
+.blood-fill,
+.blood-drips,
+.splash-shine,
+.splash::before{
+  display:none !important;
+  content:none !important;
+}
+.splash-content{
+  position:relative !important;
+  z-index:2 !important;
+  width:min(88vw,390px) !important;
+  padding:28px 20px !important;
+  text-align:center !important;
+  border-radius:32px !important;
+  background:rgba(8,8,10,.58) !important;
+  border:1px solid rgba(255,255,255,.16) !important;
+  box-shadow:
+    0 34px 100px rgba(0,0,0,.72),
+    0 0 70px rgba(255,255,255,.13),
+    inset 0 1px 0 rgba(255,255,255,.18) !important;
+  backdrop-filter:blur(16px) saturate(120%) !important;
+  -webkit-backdrop-filter:blur(16px) saturate(120%) !important;
+  opacity:0;
+  transform:translateY(16px) scale(.97);
+  animation:splashContentIn .7s ease .25s forwards !important;
+}
+.splash-icon{
+  width:96px !important;
+  height:96px !important;
+  border-radius:25px !important;
+  box-shadow:
+    0 22px 60px rgba(0,0,0,.56),
+    0 0 34px rgba(255,255,255,.18) !important;
+  margin-bottom:14px !important;
+}
+.splash-kicker{
+  font-size:11px !important;
+  letter-spacing:.13em !important;
+  text-transform:uppercase !important;
+  color:#d8d8d8 !important;
+  font-weight:900 !important;
+}
+.splash-title{
+  margin-top:5px !important;
+  font-size:24px !important;
+  line-height:1.04 !important;
+  font-weight:950 !important;
+  letter-spacing:-.04em !important;
+  color:#fff !important;
+  text-shadow:
+    0 5px 26px rgba(0,0,0,.72),
+    0 0 24px rgba(255,255,255,.18) !important;
+}
+.splash-subtitle{
+  margin-top:8px !important;
+  color:#cfcfcf !important;
+  font-size:13px !important;
+  font-weight:800 !important;
+}
+.splash-bar{
+  width:100% !important;
+  height:10px !important;
+  margin-top:18px !important;
+  border-radius:999px !important;
+  overflow:hidden !important;
+  background:rgba(255,255,255,.08) !important;
+  border:1px solid rgba(255,255,255,.13) !important;
+}
+.splash-bar span{
+  display:block !important;
+  height:100% !important;
+  width:0;
+  border-radius:999px !important;
+  background:linear-gradient(90deg,#777,#fff,#d8d8d8) !important;
+  box-shadow:0 0 18px rgba(255,255,255,.32) !important;
+  animation:loadBar 2s ease .5s forwards !important;
+}
+
+
+/* v17 Google Sheets sync UI */
+.url-input{
+  font-size:12px !important;
+  text-align:left !important;
+  padding:0 12px !important;
+}
+.sync-status{
+  margin-top:12px;
+  padding:12px;
+  border-radius:17px;
+  background:rgba(3,4,7,.88);
+  border:1px solid rgba(255,255,255,.06);
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.35;
+}
+.sync-status.ok{color:#b9ffd0;border-color:rgba(80,217,134,.22)}
+.sync-status.bad{color:#ffb4b4;border-color:rgba(255,46,46,.28)}
+.sync-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:12px;
+}
+.sync-stats div{
+  padding:12px;
+  border-radius:18px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.06);
+}
+.sync-stats b{display:block;font-size:28px;line-height:1}
+.sync-stats span{
+  display:block;margin-top:4px;color:var(--muted);font-size:11px;
+  font-weight:800;text-transform:uppercase;letter-spacing:.06em;
+}
+.tabbar{grid-template-columns:1fr 1fr 1fr 1fr !important}
+.tab{font-size:11px !important}
