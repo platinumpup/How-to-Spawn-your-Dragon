@@ -1,1 +1,31 @@
-const CACHE = "spawn-dragon-v17-google-sheets-sync";const ASSETS=["./","./index.html","./styles.css","./app.js","./manifest.json","./icon-192.png","./icon-512.png","./apple-touch-icon.png"];self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))));self.addEventListener("fetch",e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));
+const CACHE = "spawn-dragon-v18-oof-blue-yellow-splash";
+const ASSETS = [
+  "./",
+  "./index.html",
+  "./styles.css",
+  "./oof-signature-splash.css",
+  "./oof-signature-splash.js",
+  "./app.js",
+  "./manifest.json",
+  "./favicon.ico",
+  "./icon-192.png",
+  "./icon-512.png",
+  "./icon-1024.png",
+  "./apple-touch-icon.png",
+  "./icons/cat-bees-transparent.png",
+  "./icons/icon-180.png",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
+  "./icons/oof-organizedchaos-animated-poster.jpg",
+  "./icons/oof-splash-1.webp",
+  "./icons/oof-splash-2.webp",
+  "./icons/oof-splash-3.webp",
+  "./icons/oof-splash-4.webp",
+  "./icons/oof-splash-5.webp",
+  "./icons/oof-splash-chaos.webp",
+  "./icons/oof-splash-eye.webp",
+  "./icons/oof-splash-organized.webp"
+];
+self.addEventListener("install",e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)))});
+self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener("fetch",e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));

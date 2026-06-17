@@ -3,9 +3,9 @@
   "short_name": "Spawn Dragon",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#050608",
-  "theme_color": "#050608",
-  "description": "OOF mobile app for dragon chicken tracking.",
+  "background_color": "#06111f",
+  "theme_color": "#06111f",
+  "description": "OOF blue/yellow mobile app for dragon chicken tracking.",
   "icons": [
     {
       "src": "icon-192.png",

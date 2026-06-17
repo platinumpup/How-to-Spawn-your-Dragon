@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Spawn Dragon" />
   <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="theme-color" content="#050608" />
+  <meta name="theme-color" content="#06111f" />
   <title>How to Spawn Your Dragon</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -15,21 +15,32 @@
   <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152.png" />
   <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120.png" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="oof-signature-splash.css" />
 </head>
 <body>
-
-    <div id="splash" class="splash" aria-label="Loading How to Spawn Your Dragon">
-    <div class="splash-light"></div>
-    <div class="splash-content">
-      <img src="apple-touch-icon.png" alt="" class="splash-icon" />
-      <div class="splash-kicker">[OOF] OrganizedChaos</div>
-      <div class="splash-title">How to Spawn Your Dragon</div>
-      <div class="splash-subtitle">loading app...</div>
-      <div class="splash-bar"><span></span></div>
+  <!-- OOF signature splash -->
+  <div id="splash" class="splash" aria-label="Loading How to Spawn Your Dragon">
+    <div id="splashCard">
+      <div id="splashTitle" aria-label="[OOF] Organized Chaos">
+        <div class="splashPiece splashOof splashOofBracketLeft"><img src="icons/oof-splash-1.webp" alt="[" decoding="async" fetchpriority="high"></div>
+        <div class="splashPiece splashOof splashOofFirstO"><img src="icons/oof-splash-2.webp" alt="O" decoding="async" fetchpriority="high"></div>
+        <div class="splashPiece splashOof splashOofSecondO"><img src="icons/oof-splash-3.webp" alt="O" decoding="async" fetchpriority="high"></div>
+        <div class="splashPiece splashOof splashOofF"><img src="icons/oof-splash-4.webp" alt="F" decoding="async" fetchpriority="high"></div>
+        <div class="splashPiece splashOof splashOofBracketRight"><img src="icons/oof-splash-5.webp" alt="]" decoding="async" fetchpriority="high"></div>
+        <div class="splashPiece splashOrganized"><img src="icons/oof-splash-organized.webp" alt="Organized" decoding="async" fetchpriority="high"></div>
+        <div class="splashPiece splashChaos"><img src="icons/oof-splash-chaos.webp" alt="Chaos" decoding="async" fetchpriority="high"></div>
+        <div class="splashPiece splashEye">
+          <img src="icons/oof-splash-eye.webp" alt="" decoding="async" fetchpriority="high">
+          <button id="splashEyeRestart" class="splashEyeRestart" type="button" aria-label="Replay OOF splash" title="Replay OOF splash"></button>
+        </div>
+      </div>
+      <div id="splashSub"><i>LOADING DRAGON TRACKER ...</i></div>
+      <div id="splashBar"><div id="splashFill"></div></div>
+      <div id="splashCredit">2026 © PlatinumBoy</div>
     </div>
   </div>
 
-<main class="app-shell">
+  <main class="app-shell">
     <header class="app-header">
       <div>
         <div class="eyebrow">[OOF] OrganizedChaos</div>
@@ -146,6 +157,7 @@
     </div>
   </div>
 
+  <script src="oof-signature-splash.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

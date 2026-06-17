@@ -1,0 +1,262 @@
+/* OOF Signature Splash — standalone reusable CSS.
+   Paste this file + the HTML block + JS into any OOF project.
+   Required assets live in ./icons/. No shine sweep is included. */
+  #splash {
+    position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center;
+    background:#000;
+    color:#fff; transition:opacity .45s ease, visibility .45s ease; overflow:hidden;
+  }
+  /* Keep the signature visible. Add .hidden yourself if you want to hide it in a project. */
+  #splash.hidden, #splash.done { opacity:0; visibility:hidden; pointer-events:none; }
+  #splash::before {
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 50% 42%, rgba(39,211,255,.12), transparent 42%),
+      radial-gradient(circle at 50% 58%, rgba(255,211,0,.08), transparent 36%),
+      radial-gradient(circle at 50% 50%, rgba(0,0,0,0) 0 45%, rgba(0,0,0,.55) 75%, #000 100%);
+    pointer-events:none;
+  }
+  #splash::after {
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,0) 40%, rgba(0,0,0,.36));
+    pointer-events:none;
+  }
+  #splashCard {
+    position:relative; z-index:1; width:min(1060px, calc(100vw - 18px)); padding:16px 8px 20px;
+    text-align:center; border-radius:26px; background:transparent;
+    filter:drop-shadow(0 24px 38px rgba(0,0,0,.88));
+  }
+  #splashTitle {
+    position:relative; width:min(900px, 94vw); aspect-ratio:1 / 1; margin:clamp(-110px, -8vw, -34px) auto clamp(-120px, -9vw, -42px);
+    transform:translateZ(0); will-change:transform; backface-visibility:hidden;
+    animation:splashStageBreathe 5.6s ease-in-out 1.8s infinite;
+  }
+  #splashTitle::before {
+    content:""; position:absolute; inset:15% 5% 7%; z-index:-1; border-radius:50%;
+    background:radial-gradient(circle, rgba(48,217,255,.24), rgba(255,213,0,.11) 42%, transparent 70%);
+    filter:blur(20px); opacity:.78; animation:splashAura 4.2s ease-in-out 1.2s infinite;
+  }
+  .splashPiece {
+    position:absolute; inset:0; width:100%; height:100%; opacity:0;
+    transform:translateZ(0); will-change:transform, opacity, filter;
+    filter:drop-shadow(0 18px 20px rgba(0,0,0,.72));
+  }
+  .splashPiece img { display:block; width:100%; height:100%; object-fit:contain; transform:translateZ(0); backface-visibility:hidden; }
+  .splashOof { transform-origin:49.3% 31.6%; }
+  .splashOofBracketLeft {
+    transform-origin:42.6% 31.4%;
+    animation:splashOofLeftBracketIn .78s cubic-bezier(.18,1.38,.28,1) .02s both;
+  }
+  .splashOofFirstO {
+    transform-origin:47.3% 31.6%;
+    animation:splashOofFirstOIn .84s cubic-bezier(.18,1.42,.28,1) .10s both;
+  }
+  .splashOofSecondO {
+    transform-origin:52.2% 31.6%;
+    animation:splashOofSecondOIn .86s cubic-bezier(.18,1.42,.28,1) .18s both;
+  }
+  .splashOofF {
+    transform-origin:57.0% 31.2%;
+    animation:splashOofFIn .80s cubic-bezier(.18,1.35,.28,1) .28s both;
+  }
+  .splashOofBracketRight {
+    transform-origin:61.5% 31.4%;
+    animation:splashOofRightBracketIn .76s cubic-bezier(.18,1.34,.28,1) .38s both;
+  }
+  .splashOrganized {
+    transform-origin:50.5% 50.9%;
+    animation:splashOrganizedIn .88s cubic-bezier(.18,1.22,.25,1) .34s both;
+  }
+  .splashChaos {
+    transform-origin:50.6% 69.0%;
+    animation:splashChaosIn .88s cubic-bezier(.18,1.22,.25,1) .62s both;
+  }
+  .splashEye {
+    z-index:4;
+    transform-origin:66.3% 68.1%;
+    filter:drop-shadow(0 7px 10px rgba(0,0,0,.65));
+    animation:splashEyeIn .72s cubic-bezier(.16,1.48,.24,1) 1.02s both;
+  }
+  .splashEyeRestart {
+    position:absolute; left:60.05%; top:61.94%; width:11.57%; height:11.30%;
+    z-index:7; padding:0; border:0; border-radius:50%; background:transparent;
+    cursor:pointer; appearance:none; -webkit-appearance:none; touch-action:manipulation;
+  }
+  .splashEyeRestart:focus-visible {
+    outline:3px solid rgba(255,213,0,.8); outline-offset:4px;
+    box-shadow:0 0 24px rgba(39,211,255,.5);
+  }
+  #splash.splashRestarting { pointer-events:none; }
+  #splash.splashRestarting #splashSub,
+  #splash.splashRestarting #splashBar,
+  #splash.splashRestarting #splashCredit { animation:splashUiFadeAway .42s ease both; }
+  #splashTitle.splashRestarting { animation:none; }
+  #splashTitle.splashRestarting .splashPiece img { animation:none; }
+  #splashTitle.splashRestarting .splashEyeRestart { pointer-events:none; }
+  #splashTitle.splashRestarting .splashOofBracketLeft { opacity:1; animation:splashOofExitLeft .78s cubic-bezier(.18,.8,.18,1) both !important; }
+  #splashTitle.splashRestarting .splashOofFirstO { opacity:1; animation:splashOofExitPop .72s cubic-bezier(.18,.8,.18,1) .04s both !important; }
+  #splashTitle.splashRestarting .splashOofSecondO { opacity:1; animation:splashOofExitPopAlt .76s cubic-bezier(.18,.8,.18,1) .08s both !important; }
+  #splashTitle.splashRestarting .splashOofF { opacity:1; animation:splashOofExitRight .74s cubic-bezier(.18,.8,.18,1) .12s both !important; }
+  #splashTitle.splashRestarting .splashOofBracketRight { opacity:1; animation:splashOofExitRightFar .80s cubic-bezier(.18,.8,.18,1) .16s both !important; }
+  #splashTitle.splashRestarting .splashOrganized { opacity:1; animation:splashWordExitRight .82s cubic-bezier(.18,.8,.18,1) .10s both !important; }
+  #splashTitle.splashRestarting .splashChaos { opacity:1; animation:splashWordExitLeftDown .88s cubic-bezier(.18,.8,.18,1) .16s both !important; }
+  #splashTitle.splashRestarting .splashEye { opacity:1; animation:splashEyeLookThenDistance 1.58s cubic-bezier(.22,.9,.28,1) .34s both !important; }
+  .splashOofBracketLeft img { animation:splashTinyFloat 4.7s ease-in-out 1.10s infinite; }
+  .splashOofFirstO img { animation:splashTinyFloatAlt 4.9s ease-in-out 1.20s infinite; }
+  .splashOofSecondO img { animation:splashTinyFloat 5.05s ease-in-out 1.32s infinite; }
+  .splashOofF img { animation:splashTinyFloatAlt 4.85s ease-in-out 1.46s infinite; }
+  .splashOofBracketRight img { animation:splashTinyFloat 5.15s ease-in-out 1.58s infinite; }
+  .splashOrganized img { animation:splashTinyFloatAlt 5.1s ease-in-out 1.35s infinite; }
+  .splashChaos img { animation:splashTinyFloat 5.4s ease-in-out 1.6s infinite; }
+  .splashEye img { animation:splashEyeWiggle 3.4s ease-in-out 1.8s infinite; transform-origin:50% 58%; }
+  @keyframes splashOofLeftBracketIn {
+    0% { opacity:0; transform:translate(-10%,-42%) scale(.76) rotate(-12deg); filter:blur(5px) drop-shadow(0 18px 20px rgba(0,0,0,.2)); }
+    62% { opacity:1; transform:translate(1.2%,5.4%) scale(1.08) rotate(2.2deg); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+    82% { transform:translate(-.4%,-1.8%) scale(.985) rotate(-.8deg); }
+    100% { opacity:1; transform:translate(0,0) scale(1) rotate(0); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+  }
+  @keyframes splashOofFirstOIn {
+    0% { opacity:0; transform:translate(-5%,-48%) scale(.72) rotate(-8deg); filter:blur(5px) drop-shadow(0 18px 20px rgba(0,0,0,.2)); }
+    58% { opacity:1; transform:translate(.7%,6.2%) scale(1.10) rotate(2.8deg); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+    80% { transform:translate(-.2%,-2.1%) scale(.982) rotate(-.9deg); }
+    100% { opacity:1; transform:translate(0,0) scale(1) rotate(0); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+  }
+  @keyframes splashOofSecondOIn {
+    0% { opacity:0; transform:translate(4%,-46%) scale(.74) rotate(8deg); filter:blur(5px) drop-shadow(0 18px 20px rgba(0,0,0,.2)); }
+    60% { opacity:1; transform:translate(-.7%,5.8%) scale(1.09) rotate(-2.4deg); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+    81% { transform:translate(.25%,-2%) scale(.984) rotate(.85deg); }
+    100% { opacity:1; transform:translate(0,0) scale(1) rotate(0); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+  }
+  @keyframes splashOofFIn {
+    0% { opacity:0; transform:translate(8%,-41%) scale(.78) rotate(10deg); filter:blur(5px) drop-shadow(0 18px 20px rgba(0,0,0,.2)); }
+    63% { opacity:1; transform:translate(-1%,4.8%) scale(1.07) rotate(-2deg); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+    82% { transform:translate(.35%,-1.6%) scale(.987) rotate(.7deg); }
+    100% { opacity:1; transform:translate(0,0) scale(1) rotate(0); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+  }
+  @keyframes splashOofRightBracketIn {
+    0% { opacity:0; transform:translate(12%,-36%) scale(.80) rotate(13deg); filter:blur(5px) drop-shadow(0 18px 20px rgba(0,0,0,.2)); }
+    64% { opacity:1; transform:translate(-1.2%,4.5%) scale(1.06) rotate(-2.2deg); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+    83% { transform:translate(.45%,-1.4%) scale(.989) rotate(.7deg); }
+    100% { opacity:1; transform:translate(0,0) scale(1) rotate(0); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+  }
+  @keyframes splashOrganizedIn {
+    0% { opacity:0; transform:translateX(-15%) scale(.92) rotate(-1deg); filter:blur(4px) drop-shadow(0 18px 20px rgba(0,0,0,.2)); }
+    72% { opacity:1; transform:translateX(1.4%) scale(1.025) rotate(.35deg); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+    100% { opacity:1; transform:translateX(0) scale(1) rotate(0); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+  }
+  @keyframes splashChaosIn {
+    0% { opacity:0; transform:translateX(15%) scale(.92) rotate(1.3deg); filter:blur(4px) drop-shadow(0 18px 20px rgba(0,0,0,.2)); }
+    72% { opacity:1; transform:translateX(-1.2%) scale(1.025) rotate(-.35deg); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+    100% { opacity:1; transform:translateX(0) scale(1) rotate(0); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+  }
+  @keyframes splashEyeIn {
+    0% { opacity:0; transform:scale(.1) rotate(-70deg); filter:blur(3px) drop-shadow(0 7px 10px rgba(0,0,0,.2)); }
+    62% { opacity:1; transform:scale(1.28) rotate(12deg); filter:blur(0) drop-shadow(0 7px 10px rgba(0,0,0,.65)); }
+    82% { transform:scale(.92) rotate(-5deg); }
+    100% { opacity:1; transform:scale(1) rotate(0); filter:blur(0) drop-shadow(0 7px 10px rgba(0,0,0,.65)); }
+  }
+  @keyframes splashStageBreathe {
+    0%,100% { transform:translateY(0) scale(1); }
+    50% { transform:translateY(-7px) scale(1.01); }
+  }
+  @keyframes splashTinyFloat {
+    0%,100% { transform:translateY(0); }
+    50% { transform:translateY(-5px); }
+  }
+  @keyframes splashTinyFloatAlt {
+    0%,100% { transform:translateY(0) rotate(0); }
+    50% { transform:translateY(-4px) rotate(.18deg); }
+  }
+  @keyframes splashEyeWiggle {
+    0%,100% { transform:translate(0,0) rotate(0) scale(1); }
+    22% { transform:translate(.7px,-.5px) rotate(3.4deg) scale(1.012); }
+    45% { transform:translate(-.5px,.45px) rotate(-2.4deg) scale(.998); }
+    70% { transform:translate(.35px,0) rotate(1.5deg) scale(1.006); }
+  }
+  @keyframes splashAura {
+    0%,100% { opacity:.58; transform:scale(.96); }
+    50% { opacity:1; transform:scale(1.06); }
+  }
+  @keyframes splashUiFadeAway {
+    to { opacity:0; transform:translateY(8px); filter:blur(3px); }
+  }
+  @keyframes splashOofExitLeft {
+    0% { opacity:1; transform:translate(0,0) scale(1) rotate(0); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+    48% { opacity:1; transform:translate(-8%,-6%) scale(1.24) rotate(-8deg); filter:blur(.5px) drop-shadow(0 22px 24px rgba(0,0,0,.76)); }
+    100% { opacity:0; transform:translate(-62%,-44%) scale(1.72) rotate(-18deg); filter:blur(7px) drop-shadow(0 26px 26px rgba(0,0,0,.45)); }
+  }
+  @keyframes splashOofExitPop {
+    0% { opacity:1; transform:translate(0,0) scale(1) rotate(0); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+    45% { opacity:1; transform:translate(-2%,-7%) scale(1.30) rotate(-3deg); filter:blur(.5px) drop-shadow(0 22px 24px rgba(0,0,0,.76)); }
+    100% { opacity:0; transform:translate(-24%,-56%) scale(1.82) rotate(-10deg); filter:blur(7px) drop-shadow(0 26px 26px rgba(0,0,0,.45)); }
+  }
+  @keyframes splashOofExitPopAlt {
+    0% { opacity:1; transform:translate(0,0) scale(1) rotate(0); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+    46% { opacity:1; transform:translate(3%,-6%) scale(1.32) rotate(4deg); filter:blur(.5px) drop-shadow(0 22px 24px rgba(0,0,0,.76)); }
+    100% { opacity:0; transform:translate(18%,-58%) scale(1.86) rotate(12deg); filter:blur(7px) drop-shadow(0 26px 26px rgba(0,0,0,.45)); }
+  }
+  @keyframes splashOofExitRight {
+    0% { opacity:1; transform:translate(0,0) scale(1) rotate(0); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+    48% { opacity:1; transform:translate(8%,-5%) scale(1.25) rotate(6deg); filter:blur(.5px) drop-shadow(0 22px 24px rgba(0,0,0,.76)); }
+    100% { opacity:0; transform:translate(46%,-46%) scale(1.76) rotate(18deg); filter:blur(7px) drop-shadow(0 26px 26px rgba(0,0,0,.45)); }
+  }
+  @keyframes splashOofExitRightFar {
+    0% { opacity:1; transform:translate(0,0) scale(1) rotate(0); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+    48% { opacity:1; transform:translate(10%,-4%) scale(1.22) rotate(9deg); filter:blur(.5px) drop-shadow(0 22px 24px rgba(0,0,0,.76)); }
+    100% { opacity:0; transform:translate(66%,-42%) scale(1.70) rotate(22deg); filter:blur(7px) drop-shadow(0 26px 26px rgba(0,0,0,.45)); }
+  }
+  @keyframes splashWordExitRight {
+    0% { opacity:1; transform:translate(0,0) scale(1) rotate(0); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+    50% { opacity:1; transform:translate(10%,-1%) scale(1.16) rotate(2deg); filter:blur(.5px) drop-shadow(0 22px 24px rgba(0,0,0,.76)); }
+    100% { opacity:0; transform:translate(72%,-3%) scale(1.62) rotate(7deg); filter:blur(8px) drop-shadow(0 26px 26px rgba(0,0,0,.45)); }
+  }
+  @keyframes splashWordExitLeftDown {
+    0% { opacity:1; transform:translate(0,0) scale(1) rotate(0); filter:blur(0) drop-shadow(0 18px 20px rgba(0,0,0,.72)); }
+    50% { opacity:1; transform:translate(-9%,4%) scale(1.14) rotate(-2deg); filter:blur(.5px) drop-shadow(0 22px 24px rgba(0,0,0,.76)); }
+    100% { opacity:0; transform:translate(-66%,40%) scale(1.56) rotate(-8deg); filter:blur(8px) drop-shadow(0 26px 26px rgba(0,0,0,.45)); }
+  }
+  @keyframes splashEyeLookThenDistance {
+    0% { opacity:1; transform:translate(0,0) scale(1) rotate(0); filter:blur(0) drop-shadow(0 7px 10px rgba(0,0,0,.65)); }
+    18% { opacity:1; transform:translate(-2.6%,.6%) scale(1.06) rotate(-8deg); filter:blur(0) drop-shadow(0 8px 12px rgba(0,0,0,.70)); }
+    36% { opacity:1; transform:translate(2.8%,-.4%) scale(1.07) rotate(8deg); filter:blur(0) drop-shadow(0 8px 12px rgba(0,0,0,.70)); }
+    54% { opacity:1; transform:translate(0,0) scale(1.02) rotate(0); filter:blur(0) drop-shadow(0 8px 12px rgba(0,0,0,.70)); }
+    72% { opacity:.95; transform:translate(0,-1%) scale(.62) rotate(0); filter:blur(1px) drop-shadow(0 6px 10px rgba(0,0,0,.58)); }
+    100% { opacity:0; transform:translate(0,-10%) scale(.18) rotate(0); filter:blur(6px) drop-shadow(0 0 0 rgba(0,0,0,0)); }
+  }
+  #splashSub {
+    margin:12px auto 12px; font-style:italic; max-width:390px; color:#ffffff; font-size:clamp(12px, 3.1vw, 16px); line-height:1.45;
+    letter-spacing:.12em; text-transform:uppercase; text-shadow:0 2px 0 #000, 0 0 14px rgba(42,222,255,.35);
+  }
+  #splashBar {
+    width:min(430px, 82vw); height:11px; margin:0 auto; border-radius:999px; overflow:hidden;
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.38);
+    box-shadow:inset 0 2px 8px rgba(0,0,0,.55), 0 0 22px rgba(44,211,255,.20);
+  }
+  #splashFill {
+    height:100%; width:0%; border-radius:inherit;
+    background:linear-gradient(90deg, #27d8ff 0%, #fff27a 55%, #ffd400 100%);
+    box-shadow:0 0 18px rgba(104, 104, 103, 0.096);
+    animation:splashLoad 3.2s ease forwards;
+  }
+  #splashEnter {
+    margin-top:18px; min-width:215px; color:#ffffff !important; font-weight:900; letter-spacing:.08em; text-transform:uppercase; text-shadow:0 2px 0 rgba(0,0,0,.72), 0 0 10px rgba(0,0,0,.45);
+    background:linear-gradient(180deg,#fff27a 0%,#ffbb18 58%,#ff8500 100%);
+    border:2px solid rgba(255,255,255,.86); border-radius:999px;
+    box-shadow:0 5px 0 #b44400, 0 0 24px rgba(255,191,0,.25); cursor:pointer;
+  }
+  #splashEnter:hover, #splashEnter:focus { filter:brightness(1.08); outline:none; }
+  #splashCredit { margin-top:12px; font-size:11px; color:rgba(255,255,255,.58); letter-spacing:.08em; }
+  @keyframes splashLoad { to { width:100%; } }
+
+  @media (max-width:640px) {
+    #splashCard { padding-top:8px; }
+    #splashTitle { width:96vw; }
+    #splashSub { margin-top:8px; }
+  }
+
+
+
+
+/* app handoff */
+#splash.done{opacity:0!important;visibility:hidden!important;pointer-events:none!important;}
+#splashCard{max-height:100dvh;}
