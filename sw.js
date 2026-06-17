@@ -1,4 +1,4 @@
-const CACHE = "spawn-dragon-v18-oof-blue-yellow-splash";
+const CACHE = "spawn-dragon-v19-eye-enter";
 const ASSETS = [
   "./",
   "./index.html",

@@ -6,7 +6,7 @@
     background:#000;
     color:#fff; transition:opacity .45s ease, visibility .45s ease; overflow:hidden;
   }
-  /* Keep the signature visible. Add .hidden yourself if you want to hide it in a project. */
+  /* Keep the signature visible until the eye is clicked/tapped. */
   #splash.hidden, #splash.done { opacity:0; visibility:hidden; pointer-events:none; }
   #splash::before {
     content:""; position:absolute; inset:0;
@@ -86,20 +86,31 @@
     outline:3px solid rgba(255,213,0,.8); outline-offset:4px;
     box-shadow:0 0 24px rgba(39,211,255,.5);
   }
-  #splash.splashRestarting { pointer-events:none; }
+  #splash.splashEntering, #splash.splashRestarting { pointer-events:none; }
+  #splash.splashEntering #splashSub,
+  #splash.splashEntering #splashBar,
+  #splash.splashEntering #splashCredit,
   #splash.splashRestarting #splashSub,
   #splash.splashRestarting #splashBar,
   #splash.splashRestarting #splashCredit { animation:splashUiFadeAway .42s ease both; }
-  #splashTitle.splashRestarting { animation:none; }
-  #splashTitle.splashRestarting .splashPiece img { animation:none; }
-  #splashTitle.splashRestarting .splashEyeRestart { pointer-events:none; }
+  #splashTitle.splashEntering, #splashTitle.splashRestarting { animation:none; }
+  #splashTitle.splashEntering .splashPiece img, #splashTitle.splashRestarting .splashPiece img { animation:none; }
+  #splashTitle.splashEntering .splashEyeRestart, #splashTitle.splashRestarting .splashEyeRestart { pointer-events:none; }
+  #splashTitle.splashEntering .splashOofBracketLeft,
   #splashTitle.splashRestarting .splashOofBracketLeft { opacity:1; animation:splashOofExitLeft .78s cubic-bezier(.18,.8,.18,1) both !important; }
+  #splashTitle.splashEntering .splashOofFirstO,
   #splashTitle.splashRestarting .splashOofFirstO { opacity:1; animation:splashOofExitPop .72s cubic-bezier(.18,.8,.18,1) .04s both !important; }
+  #splashTitle.splashEntering .splashOofSecondO,
   #splashTitle.splashRestarting .splashOofSecondO { opacity:1; animation:splashOofExitPopAlt .76s cubic-bezier(.18,.8,.18,1) .08s both !important; }
+  #splashTitle.splashEntering .splashOofF,
   #splashTitle.splashRestarting .splashOofF { opacity:1; animation:splashOofExitRight .74s cubic-bezier(.18,.8,.18,1) .12s both !important; }
+  #splashTitle.splashEntering .splashOofBracketRight,
   #splashTitle.splashRestarting .splashOofBracketRight { opacity:1; animation:splashOofExitRightFar .80s cubic-bezier(.18,.8,.18,1) .16s both !important; }
+  #splashTitle.splashEntering .splashOrganized,
   #splashTitle.splashRestarting .splashOrganized { opacity:1; animation:splashWordExitRight .82s cubic-bezier(.18,.8,.18,1) .10s both !important; }
+  #splashTitle.splashEntering .splashChaos,
   #splashTitle.splashRestarting .splashChaos { opacity:1; animation:splashWordExitLeftDown .88s cubic-bezier(.18,.8,.18,1) .16s both !important; }
+  #splashTitle.splashEntering .splashEye,
   #splashTitle.splashRestarting .splashEye { opacity:1; animation:splashEyeLookThenDistance 1.58s cubic-bezier(.22,.9,.28,1) .34s both !important; }
   .splashOofBracketLeft img { animation:splashTinyFloat 4.7s ease-in-out 1.10s infinite; }
   .splashOofFirstO img { animation:splashTinyFloatAlt 4.9s ease-in-out 1.20s infinite; }

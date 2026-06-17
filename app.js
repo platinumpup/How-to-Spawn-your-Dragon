@@ -181,8 +181,3 @@ if(getSheetUrl()) setTimeout(()=>syncSharedLogs(false).catch(()=>setSyncStatus("
 
 if("serviceWorker"in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}
 
-window.addEventListener("load",()=>{
-  const splash=document.getElementById("splash");
-  if(!splash)return;
-  setTimeout(()=>{splash.classList.add("done");setTimeout(()=>splash.remove(),520)},3850);
-});
